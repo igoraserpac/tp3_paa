@@ -65,5 +65,17 @@ String* concatenar(String *s1, String *s2){
         ret->str[n+2+i] = s2->str[i];
     }
     ret->str[m+n+2] = '\0';
+    ret->length = n+m+2;
+    return ret;
+}
+
+String* cortar(String *s1, int a, int b){
+    String *ret = (String*)malloc(sizeof(String));
+    ret->length = b-a+1;
+    ret->str = (char*)malloc((ret->length+1)*sizeof(char));
+    for(int i = 0; i < ret->length; i++){
+        ret->str[i] = s1->str[a+i-1];
+    }
+    ret->str[ret->length] = '\0';
     return ret;
 }

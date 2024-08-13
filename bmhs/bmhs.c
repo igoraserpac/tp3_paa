@@ -1,14 +1,14 @@
-#include "bmh.h"
+#include "bmhs.h"
 
-bool Bmh(String *t, String *p){
+bool Bmhs(String *t, String *p){
     int n = t->length, m = p->length;
     int i, j, k;
     int d[256];
     for(j = 0; j < 256; j++){
-        d[j] = m;
+        d[j] = m+1;
     }
     for(j = 1; j < m; j++){
-        d[p->str[j-1]] = m-j;
+        d[p->str[j-1]] = m-j+1;
     }
     i = m;
     while(i<=n){
@@ -19,7 +19,7 @@ bool Bmh(String *t, String *p){
         if(j == 0){
             return true;
         }
-        i += d[t->str[i-1]];
+        i += d[t->str[i]];
     }
     return false;
 }

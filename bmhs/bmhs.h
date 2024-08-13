@@ -1,11 +1,11 @@
-#ifndef BMH_H
-#define BMH_H
+#ifndef BMHS_H
+#define BMHS_H
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include "../my_string/string.h"
 
-bool Bmh(String *t, String *p);
+bool Bmhs(String *t, String *p);
 
 #endif
