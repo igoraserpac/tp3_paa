@@ -1,10 +1,11 @@
 #include "forca_bruta.h"
 
-bool ForcaBruta(char *t, char *p, int n, int m){
+bool ForcaBruta(String *t, String *p){
     int i, j, k;
+    int n = t->length, m = p->length;
     for(i = 0; i < n-m; i++){
         k = i; j = 0;
-        while(k < n && j < m && t[k] == p[j]){
+        while(k < n && j < m && t->str[k] == p->str[j]){
             j++; k++;
         }
         if(j >= m) return true;

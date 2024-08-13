@@ -1,7 +1,7 @@
 #ifndef _STRING_H
 #define _STRING_H
 
-#include "listaEncadeada.h"
+#include "../tads/listaEncadeada.h"
 
 typedef struct {
     char* str;
@@ -10,5 +10,6 @@ typedef struct {
 
 String* lerString();
 void desalocarString(String *s);
+String* concatenar(String *s1, String *s2);
 
 #endif

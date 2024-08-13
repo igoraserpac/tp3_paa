@@ -51,3 +51,19 @@ String* lerString(){
 
     return s;
 }
+
+String* concatenar(String *s1, String *s2){
+    int n = s1->length, m = s2->length;
+    String *ret = (String*)malloc(sizeof(String));
+    ret->str = (char*)malloc((n+m+3)*sizeof(char));
+    ret->str[0] = '#';
+    for(int i = 0; i < n; i++){
+        ret->str[i+1] = s1->str[i];
+    }
+    ret->str[n+1] = '$';
+    for(int i = 0;i < m; i++){
+        ret->str[n+2+i] = s2->str[i];
+    }
+    ret->str[m+n+2] = '\0';
+    return ret;
+}

@@ -4,7 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "../my_string/string.h"
 
-bool ForcaBruta(char *t, char *p, int n, int m);
+bool ForcaBruta(String *t, String *p);
 
 #endif
