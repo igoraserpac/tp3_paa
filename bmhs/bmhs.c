@@ -7,11 +7,11 @@ bool Bmhs(String *t, String *p){
     for(j = 0; j < 256; j++){
         d[j] = m+1;
     }
-    for(j = 1; j < m; j++){
+    for(j = 1; j <= m; j++){
         d[p->str[j-1]] = m-j+1;
     }
     i = m;
-    while(i<=n){
+    while(i <= n){
         k = i; j = m;
         while(t->str[k-1] == p->str[j-1] && j > 0){
             k--; j--;

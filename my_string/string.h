@@ -8,7 +8,7 @@ typedef struct {
     int length;
 } String;
 
-String* lerString();
+String* lerString(FILE *input);
 void desalocarString(String *s);
 String* concatenar(String *s1, String *s2);
 String* cortar(String *s1, int a, int b);

@@ -1,10 +1,10 @@
 #include "string.h"
 
-List* lerEntrada(){
+List* lerEntrada(FILE *input){
     List* list = criarLista();
 
     char ch;
-    while ((ch = getchar()) != '\n' && ch != EOF){
+    while ((ch = fgetc(input)) != '\n' && ch != EOF){
         inserChar(list, ch);
     }
 
@@ -44,8 +44,8 @@ void desalocarString(String *s){
     free(s);
 }
 
-String* lerString(){
-    List* list = lerEntrada();
+String* lerString(FILE *input){
+    List* list = lerEntrada(input);
     String *s = criarString(list);
     desalocarLista(list);
 
