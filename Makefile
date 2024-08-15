@@ -1,20 +1,23 @@
-all: main.c tads/listaEncadeada.c tads/listaEncadeada.h my_string/string.c my_string/string.h forca_bruta/forca_bruta.c forca_bruta/forca_bruta.h kmp/kmp.c kmp/kmp.h bmh/bmh.c bmh/bmh.h bmhs/bmhs.c bmhs/bmhs.h
-	gcc main.c tads/listaEncadeada.c my_string/string.c forca_bruta/forca_bruta.c kmp/kmp.c bmh/bmh.c bmhs/bmhs.c -o tp3
+all: main.o string/string.h string/string.o forca_bruta/forca_bruta.h forca_bruta/forca_bruta.o kmp/kmp.h kmp/kmp.o bmh/bmh.h bmh/bmh.o bmhs/bmhs.h bmhs/bmhs.o
+	gcc main.o string/string.o forca_bruta/forca_bruta.o kmp/kmp.o bmh/bmh.o bmhs/bmhs.o -o tp3
 
-# all: listaEncadeada.o string.oz
-# 	gcc main.c tads/listaEncadeada.h listaEncadeada.o string.o my_string/string.h -o main
+main.o: main.c
+	gcc -c main.c -o main.o
 
-# listaEncadeada.o: tads/listaEncadeada.h
-# 	gcc -c tads/listaEncadeada.c
+string/string.o: string/string.h
+	gcc -c string/string.c -o string/string.o
 
-# string.o: my_string/string.h
-# 	gcc -c my_string/string.c
+forca_bruta/forca_bruta.o: forca_bruta/forca_bruta.h
+	gcc -c forca_bruta/forca_bruta.c -o forca_bruta/forca_bruta.o
 
-# run: main
-# 	./main
+kmp/kmp.o: kmp/kmp.h
+	gcc -c kmp/kmp.c -o kmp/kmp.o
 
-# val: main
-# 	valgrind ./main
+bmh/bmh.o: bmh/bmh.h
+	gcc -c bmh/bmh.c -o bmh/bmh.o
 
-# rm: string.o listaEncadeada.o
-# 	rm *.o
+bmhs/bmhs.o: bmhs/bmhs.h
+	gcc -c bmhs/bmhs.c -o bmhs/bmhs.o
+
+rm: tp3 main.o string/string.o forca_bruta/forca_bruta.o kmp/kmp.o bmh/bmh.o bmhs/bmhs.o
+	rm tp3 main.o string/string.o forca_bruta/forca_bruta.o kmp/kmp.o bmh/bmh.o bmhs/bmhs.o

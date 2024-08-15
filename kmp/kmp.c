@@ -1,11 +1,13 @@
 #include "kmp.h"
+#include "../string/string.h"
 
-void init_next(String *p, int *next){
-    for(int i = 0; i < p->length; i++){
+//Pré-processamento do padrão P
+void init_next(string *p, int *next){
+    for(int i = 0; i < p->fim; i++){
         next[i] = 0;
     }
     int idx = 0, j = 1;
-    while(j < p->length){
+    while(j < p->fim){
         if(p->str[idx] == p->str[j]){
             idx++;
             next[j] = idx;
@@ -19,8 +21,8 @@ void init_next(String *p, int *next){
 
 }
 
-bool Kmp(String *t, String *p){
-    int i = 0, j = 0, n = t->length, m = p->length;
+bool Kmp(string *t, string *p){
+    int i = t->inicio, j = 0, n = t->fim, m = p->fim;
     int *next = (int*)malloc(m*sizeof(int));
     init_next(p, next);
     while (i < n && j < m) {

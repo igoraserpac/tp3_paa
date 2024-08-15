@@ -4,8 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "../my_string/string.h"
+#include "../string/string.h"
 
-bool Bmhs(String *t, String *p);
+bool Bmhs(string *t, string *p);
 
 #endif

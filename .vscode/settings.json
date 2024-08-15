@@ -3,6 +3,7 @@
         "my_string.h": "c",
         "stdbool.h": "c",
         "forca_bruta.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "string_view": "c"
     }
 }
