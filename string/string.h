@@ -14,8 +14,7 @@ typedef struct string
     long long fim;
 }string;
 
-string* lerString();
+string* lerString(FILE *input);
 void desalocarString(string*s);
-string* cortar(string* s, long long a, long long b);
 
 #endif

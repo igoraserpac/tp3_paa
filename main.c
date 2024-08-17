@@ -43,6 +43,10 @@ int main(int argc, char *argv[]) {
     long long k;
     fscanf(input ,"%lld", &k);
 
+    //Início da contagem de tempo
+    gettimeofday(&start_time, NULL);
+    getrusage(RUSAGE_SELF, &start_usage);
+
     for(long long i = 0; i < k; i++){
         long long a, b;
         fscanf(input, "%lld %lld", &a, &b);
@@ -50,10 +54,6 @@ int main(int argc, char *argv[]) {
         //Criação da substring a ser analizada a partir do texto original
         t->inicio = a - 1;
         t->fim = b;
-
-        //Início da contagem de tempo
-        gettimeofday(&start_time, NULL);
-        getrusage(RUSAGE_SELF, &start_usage);
 
         //Processamento
         if(algoritmo[0] == '1'){
@@ -85,20 +85,18 @@ int main(int argc, char *argv[]) {
             }
         }
 
-        //Cálculo de tempo gasto no processamento e impressão da saída
-        gettimeofday(&end_time, NULL);
-        getrusage(RUSAGE_SELF, &end_usage);
-
-        cpu_time = (end_usage.ru_utime.tv_sec - start_usage.ru_utime.tv_sec) * 1000000 +
-                    (end_usage.ru_utime.tv_usec - start_usage.ru_utime.tv_usec);
-        real_time = (end_time.tv_sec - start_time.tv_sec) * 1000000 +
-                    (end_time.tv_usec - start_time.tv_usec);
-        // printf("Tempo de CPU: %ld microssegundos\n", cpu_time);
-        printf("%lld %lld %ld\n", a, b, cpu_time);
-        // printf("Tempo real: %ld microssegundos\n", real_time);
     }
+    //Cálculo de tempo gasto no processamento e impressão da saída
+    gettimeofday(&end_time, NULL);
+    getrusage(RUSAGE_SELF, &end_usage);
 
-
+    cpu_time = (end_usage.ru_utime.tv_sec - start_usage.ru_utime.tv_sec) * 1000000 +
+                (end_usage.ru_utime.tv_usec - start_usage.ru_utime.tv_usec);
+    real_time = (end_time.tv_sec - start_time.tv_sec) * 1000000 +
+                (end_time.tv_usec - start_time.tv_usec);
+                
+    printf("Tempo de CPU: %ld microssegundos\n", cpu_time);
+    printf("Tempo real: %ld microssegundos\n", real_time);
 
     //Fechamento dos arquivos de entrada e saída
     fclose(input);
